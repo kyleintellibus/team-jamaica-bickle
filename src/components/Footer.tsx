@@ -1,60 +1,71 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const footerColumns = [
   {
     heading: "Browse",
     links: [
-      { label: "The Penn Relays", href: "#" },
-      { label: "Defibrillator Program", href: "#" },
-      { label: "Labor of Love", href: "#" },
-      { label: "Events", href: "#" },
-      { label: "News", href: "#" },
-      { label: "Bickle TV", href: "#" },
+      { label: "The Penn Relays", href: "/penn-relays" },
+      { label: "Defibrillator Program", href: "/defibrillator-program" },
+      { label: "Labor of Love", href: "/labor-of-love" },
+      { label: "Events", href: "/events" },
+      { label: "News", href: "/news" },
+      { label: "Bickle TV", href: "/bickle-tv" },
+      { label: "Our Team", href: "/team" },
     ],
   },
   {
     heading: "Programs",
     links: [
-      { label: "Athlete Meals Program", href: "#" },
-      { label: "Medical Support Services", href: "#" },
-      { label: "TJB Village", href: "#" },
-      { label: "Defibrillator Program", href: "#" },
+      { label: "Athlete Meals Program", href: "/athlete-meals" },
+      { label: "Medical Support Services", href: "/medical-support" },
+      { label: "TJB Village", href: "/tjb-village" },
+      { label: "Defibrillator Program", href: "/defibrillator-program" },
     ],
   },
   {
     heading: "Get Involved",
     links: [
-      { label: "Donate", href: "#" },
-      { label: "Volunteer", href: "#" },
-      { label: "Partner With Us", href: "#" },
-      { label: "Sponsor an Athlete", href: "#" },
-      { label: "Support a Program", href: "#" },
+      { label: "Donate", href: "https://secure.givelively.org/donate/team-jamaica-bickle-inc?ref=sd_widget" },
+      { label: "Volunteer", href: "/volunteer" },
+      { label: "Partner With Us", href: "/partner" },
+      { label: "Sponsor an Athlete", href: "/sponsor-athlete" },
+      { label: "Support a Program", href: "/support-program" },
     ],
   },
   {
     heading: "Contact",
     links: [
-      { label: "Email", href: "#" },
-      { label: "Phone", href: "#" },
-      { label: "Mailing Address", href: "#" },
-      { label: "Philadelphia, Pennsylvania\nUnited States", href: "#" },
+      { label: "Email", href: "mailto:info@teamjamaicabickle.org" },
+      { label: "Phone", href: "tel:+13006759000" },
+      { label: "Mailing Address", href: "/contact" },
+      { label: "Philadelphia, Pennsylvania\nUnited States", href: "/contact" },
     ],
   },
   {
     heading: "Follow us",
     links: [
-      { label: "Facebook", href: "#" },
-      { label: "X (Formerly Twitter)", href: "#" },
-      { label: "TikTok", href: "#" },
-      { label: "Instagram", href: "#" },
+      { label: "Facebook", href: "https://www.facebook.com/teamjamaicabickle" },
+      { label: "X (Formerly Twitter)", href: "https://twitter.com/teamjamaicabickle" },
+      { label: "TikTok", href: "https://www.tiktok.com/@teamjamaicabickle" },
+      { label: "Instagram", href: "https://www.instagram.com/teamjamaicabickle" },
     ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-[#0d1f1a] text-gray-300">
+      {/* Hero image */}
+      <div className="relative w-full" style={{ aspectRatio: "3 / 1" }}>
+        <Image
+          src="/footer_image.png"
+          alt="Athletes at the Penn Relays"
+          fill
+          className="object-cover object-top"
+        />
+      </div>
       {/* Main footer content */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Brand block */}
@@ -73,12 +84,9 @@ export default function Footer() {
             Team Jamaica Bickle is a nonprofit organization dedicated to supporting Jamaican and
             Caribbean youth athletes competing internationally at the Penn Relays.
           </p>
-          <Link
-            href="#"
-            className="inline-block mt-4 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors"
-          >
-            Donate Now
-          </Link>
+          <Button asChild className="mt-4 bg-green-600 hover:bg-green-700 text-white">
+            <Link href="https://secure.givelively.org/donate/team-jamaica-bickle-inc?ref=sd_widget" target="_blank" rel="noopener noreferrer">Donate Now</Link>
+          </Button>
         </div>
 
         {/* Columns */}
@@ -108,8 +116,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
           <span>© Team Jamaica Bickle 2026</span>
           <div className="flex gap-4">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
           </div>
         </div>
       </div>
