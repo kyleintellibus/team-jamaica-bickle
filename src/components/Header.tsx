@@ -7,20 +7,22 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Penn Relays", href: "/news" },
+  { label: "Home", href: "/" },
+  { label: "Penn Relays", href: "/penn-relays" },
   { label: "Fundraising", href: "https://secure.givelively.org/donate/team-jamaica-bickle-inc?ref=sd_widget", external: true },
-  { label: "Programs", href: "#" },
+  { label: "Programs", href: "/support-program" },
   { label: "Sponsors", href: "/#sponsors" },
-  { label: "Events", href: "/events" },
   { label: "Media", href: "/news" },
-  { label: "Contact", href: "/contact" },
+  { label: "Events", href: "/events" },
+  { label: "About us", href: "/about" },
+  { label: "Contacts", href: "/contact" },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full bg-transparent sticky top-0 z-50">
+    <header className="w-full bg-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
         {/* Logo */}
         <Link href="/" className="shrink-0">

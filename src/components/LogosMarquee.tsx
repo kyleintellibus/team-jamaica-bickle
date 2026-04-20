@@ -4,12 +4,12 @@ import Link from "next/link";
 const logos = [
   { src: "/image-20.png", alt: "Grace Foods", href: "https://gracefoods.com" },
   { src: "/image-21.png", alt: "Jamaica Tourist Board", href: "https://www.visitjamaica.com" },
-  { src: "/image-23.png", alt: "Second Round Foundation", href: "https://secondroundfoundation.org" },
-  { src: "/image-24.png", alt: "Tower Isle's 50", href: "https://towerislespatties.com" },
-  { src: "/image-26.png", alt: "Resorts World Casino", href: "https://rwnewyork.com" },
-  { src: "/image-27.png", alt: "New York Life", href: "https://www.newyorklife.com" },
-  { src: "/image-30.png", alt: "BFW Group LLC", href: "https://bfwgroup.net" },
-  { src: "/image-31.png", alt: "Sponsor", href: "#" },
+  { src: "/image-23.png", alt: "Resorts World Casino", href: "https://rwnewyork.com" },
+  { src: "/image-24.png", alt: "New York Life", href: "https://www.newyorklife.com" },
+  { src: "/image-26.png", alt: "On", href: "https://www.on.com" },
+  { src: "/image-27.png", alt: "Second Round Foundation", href: "https://secondroundfoundation.org" },
+  { src: "/image-30.png", alt: "Tower Isle's 50", href: "https://towerislespatties.com" },
+  { src: "/image-31.png", alt: "BFW Group LLC", href: "https://bfwgroup.net" },
 ];
 
 export default function LogosMarquee() {

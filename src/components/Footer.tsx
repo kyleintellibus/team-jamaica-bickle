@@ -37,10 +37,10 @@ const footerColumns = [
   {
     heading: "Contact",
     links: [
-      { label: "Email", href: "mailto:info@teamjamaicabickle.org" },
-      { label: "Phone", href: "tel:+13006759000" },
-      { label: "Mailing Address", href: "/contact" },
-      { label: "Philadelphia, Pennsylvania\nUnited States", href: "/contact" },
+      { label: "info@teamjamaicabickle.org", href: "mailto:info@teamjamaicabickle.org" },
+      { label: "teamjamaicabickle@gmail.com", href: "mailto:teamjamaicabickle@gmail.com" },
+      { label: "718 523-2861", href: "tel:+17185232861" },
+      { label: "Team Jamaica Bickle, Inc\n242-14 Merrick Blvd\nRosedale, NY 11422", href: "/contact" },
     ],
   },
   {

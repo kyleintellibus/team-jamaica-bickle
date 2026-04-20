@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MessageCircle, Send, MapPin, Phone } from "lucide-react";
+import { Send, MapPin, Phone } from "lucide-react";
 
 const interests = [
   "Volunteering Opportunities",
@@ -24,6 +25,82 @@ const interests = [
 ];
 
 export default function ContactPage() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneCountry, setPhoneCountry] = useState("US");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [message, setMessage] = useState("");
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
+
+  const toggleInterest = (interest: string, checked: boolean) => {
+    setSelectedInterests((current) => {
+      if (checked) {
+        if (current.includes(interest)) return current;
+        return [...current, interest];
+      }
+      return current.filter((item) => item !== interest);
+    });
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitStatus(null);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/info@teamjamaicabickle.org", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: "New Team Jamaica Bickle Contact Form Submission",
+          _cc: "teamjamaicabickle@gmail.com",
+          _captcha: "false",
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          phone_country: phoneCountry,
+          phone_number: phoneNumber,
+          interests: selectedInterests.length > 0 ? selectedInterests.join(", ") : "Not specified",
+          message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || data?.success === false) {
+        throw new Error("Unable to send message right now.");
+      }
+
+      setSubmitStatus({
+        type: "success",
+        message: "Thanks for reaching out. Your message was sent to Team Jamaica Bickle.",
+      });
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhoneCountry("US");
+      setPhoneNumber("");
+      setMessage("");
+      setSelectedInterests([]);
+    } catch {
+      setSubmitStatus({
+        type: "error",
+        message: "We couldn't send your message right now. Please email info@teamjamaicabickle.org directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 px-6 py-16">
       <div className="max-w-5xl mx-auto">
@@ -32,27 +109,46 @@ export default function ContactPage() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Form card */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 space-y-5">
+          <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <Label htmlFor="first-name">First name</Label>
-                <Input id="first-name" placeholder="First name" />
+                <Input
+                  id="first-name"
+                  placeholder="First name"
+                  value={firstName}
+                  onChange={(event) => setFirstName(event.target.value)}
+                  required
+                />
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="last-name">Last name</Label>
-                <Input id="last-name" placeholder="Last name" />
+                <Input
+                  id="last-name"
+                  placeholder="Last name"
+                  value={lastName}
+                  onChange={(event) => setLastName(event.target.value)}
+                  required
+                />
               </div>
             </div>
 
             <div className="space-y-1.5">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="you@company.com" />
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@company.com"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+              />
             </div>
 
             <div className="space-y-1.5">
               <Label>Phone number</Label>
               <div className="flex gap-2">
-                <Select defaultValue="US">
+                <Select value={phoneCountry} onValueChange={setPhoneCountry}>
                   <SelectTrigger className="w-24">
                     <SelectValue />
                   </SelectTrigger>
@@ -63,93 +159,110 @@ export default function ContactPage() {
                     <SelectItem value="CA">CA</SelectItem>
                   </SelectContent>
                 </Select>
-                <Input type="tel" placeholder="+1 (555) 000-0000" className="flex-1" />
+                <Input
+                  type="tel"
+                  placeholder="+1 (555) 000-0000"
+                  className="flex-1"
+                  value={phoneNumber}
+                  onChange={(event) => setPhoneNumber(event.target.value)}
+                  required
+                />
               </div>
             </div>
 
             <div className="space-y-1.5">
               <Label htmlFor="message">Message</Label>
-              <Textarea id="message" placeholder="Leave us a message..." rows={5} className="resize-none" />
+              <Textarea
+                id="message"
+                placeholder="Leave us a message..."
+                rows={5}
+                className="resize-none"
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                required
+              />
             </div>
 
-            <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white">
-              Send message
+            <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send message"}
             </Button>
+
+            {submitStatus && (
+              <p
+                className={`text-sm ${
+                  submitStatus.type === "success" ? "text-green-700" : "text-red-600"
+                }`}
+              >
+                {submitStatus.message}
+              </p>
+            )}
 
             <div className="space-y-2 pt-1">
               <Label>Interest</Label>
               <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-                {interests.map((item) => (
+                {interests.map((item, index) => {
+                  const id = `interest-${index}`;
+                  return (
                   <div key={item} className="flex items-center gap-2">
-                    <Checkbox id={item} />
-                    <Label htmlFor={item} className="font-normal text-sm text-gray-600 cursor-pointer">
+                    <Checkbox
+                      id={id}
+                      checked={selectedInterests.includes(item)}
+                      onCheckedChange={(checked) => toggleInterest(item, checked === true)}
+                    />
+                    <Label htmlFor={id} className="font-normal text-sm text-gray-600 cursor-pointer">
                       {item}
                     </Label>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
-          </div>
+          </form>
 
           {/* Contact info */}
           <div className="space-y-8 pt-2">
             <div>
-              <h3 className="text-base font-semibold text-gray-900 mb-1">Chat With us</h3>
-              <p className="text-sm text-gray-500 mb-3">
-                Interested In Volunteering? Speak To Our Friendly Team.
+              <h3 className="text-base font-semibold text-gray-900 mb-2">Contact</h3>
+              <p className="text-sm text-gray-500 mb-4">
+                Reach Team Jamaica Bickle, Inc using the details below.
               </p>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2 text-gray-700">
-                  <MessageCircle className="w-4 h-4 text-gray-400" />
-                  <a href="#" className="hover:underline">Start A Live Chat</a>
-                  <span className="flex items-center gap-1 bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full border border-green-200">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
-                    Online
-                  </span>
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <Send className="w-4 h-4 text-gray-400" />
-                  <a href="mailto:info@teamjamaicabickle.org" className="hover:underline">
-                    Shoot Us An Email
-                  </a>
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <svg className="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                  <a href="#" className="hover:underline">Message Us On X</a>
-                </li>
-              </ul>
             </div>
 
             <div>
-              <h3 className="text-base font-semibold text-gray-900 mb-1">Call us</h3>
-              <p className="text-sm text-gray-500 mb-3">
-                Mon - Fri, 9:00 AM - 5:00 PM (UTC/GMT +10:00).
-              </p>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2 text-gray-700">
-                  <Phone className="w-4 h-4 text-gray-400" />
-                  <a href="tel:+13006759000" className="hover:underline">1300 675 900</a>
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <Phone className="w-4 h-4 text-gray-400" />
-                  <a href="tel:+628776520071" className="hover:underline">+62 877 652 0071</a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-base font-semibold text-gray-900 mb-1">United states</h3>
-              <p className="text-sm text-gray-500 mb-3">
-                Visit Our Office Mon - Fri, 9:00 AM - 5:00 PM
-              </p>
+              <h3 className="text-base font-semibold text-gray-900 mb-2">Address</h3>
               <div className="flex items-start gap-2 text-sm text-gray-700">
                 <MapPin className="w-4 h-4 text-gray-400 mt-0.5 shrink-0" />
                 <span>
-                  90 Edelweis Clay Street,<br />
-                  Kinderland NSW 3000 Brooklyn, New York
+                  Team Jamaica Bickle, Inc<br />
+                  242-14 Merrick Blvd<br />
+                  Rosedale, NY 11422
                 </span>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2">Email</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center gap-2 text-gray-700">
+                  <Send className="w-4 h-4 text-gray-400" />
+                  <a href="mailto:info@teamjamaicabickle.org" className="hover:underline">
+                    info@teamjamaicabickle.org
+                  </a>
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <Send className="w-4 h-4 text-gray-400" />
+                  <a href="mailto:teamjamaicabickle@gmail.com" className="hover:underline">
+                    teamjamaicabickle@gmail.com
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2">Telephone</h3>
+              <div className="flex items-center gap-2 text-sm text-gray-700">
+                <Phone className="w-4 h-4 text-gray-400" />
+                <a href="tel:+17185232861" className="hover:underline">718 523-2861</a>
               </div>
             </div>
           </div>
