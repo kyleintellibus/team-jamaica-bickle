@@ -153,8 +153,15 @@ export function generateStaticParams() {
   return Object.keys(articles).map((slug) => ({ slug }));
 }
 
-export default function PostPage({ params }: { params: { slug: string } }) {
-  const post = articles[params.slug];
+type PostPageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export default async function PostPage({ params }: PostPageProps) {
+  const { slug } = await params;
+  const post = articles[slug];
 
   if (!post) {
     return (

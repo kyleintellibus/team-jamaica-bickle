@@ -148,7 +148,7 @@ export default function ContactPage() {
             <div className="space-y-1.5">
               <Label>Phone number</Label>
               <div className="flex gap-2">
-                <Select value={phoneCountry} onValueChange={setPhoneCountry}>
+                <Select value={phoneCountry} onValueChange={(value) => setPhoneCountry(value ?? "US")}>
                   <SelectTrigger className="w-24">
                     <SelectValue />
                   </SelectTrigger>
