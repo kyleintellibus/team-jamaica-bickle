@@ -7,21 +7,25 @@ const sideArticles = [
     category: "News",
     date: "December 19, 2025",
     title: "Team Jamaica Bickle Marks 25 Years of Supporting Caribbean Athletes",
+    image: "/Content.png",
   },
   {
     category: "News",
     date: "December 19, 2025",
     title: "Team Jamaica Bickle Defibrillator Program Expands in Jamaica",
+    image: "/Content.png",
   },
   {
     category: "News",
     date: "December 19, 2025",
     title: "Team Jamaica Bickle at the Penn Relays",
+    image: "/Content.png",
   },
   {
     category: "News",
     date: "March 24, 2023",
     title: "Resorts World New York City Proudly Supports Team Jamaica Bickle",
+    image: "/Content.png",
   },
 ];
 
@@ -47,7 +51,7 @@ export default function MediaNews() {
           <div className="md:col-span-3">
             <div className="relative w-full rounded-lg overflow-hidden mb-4" style={{ aspectRatio: "16/9" }}>
               <Image
-                src="/content.png"
+                src="/Content.png"
                 alt="Team Jamaica Bickle athletes"
                 fill
                 className="object-cover"
@@ -68,7 +72,9 @@ export default function MediaNews() {
           <div className="md:col-span-2 flex flex-col gap-0 divide-y divide-gray-800">
             {sideArticles.map((a, i) => (
               <div key={i} className="flex gap-3 py-4 group cursor-pointer">
-                <div className="w-20 h-16 bg-gray-800 rounded shrink-0" />
+                <div className="relative w-20 h-16 rounded shrink-0 overflow-hidden">
+                  <Image src={a.image} alt={a.title} fill className="object-cover" />
+                </div>
                 <div>
                   <p className="text-xs text-gray-500 mb-1">
                     {a.category} &nbsp;|&nbsp; {a.date}

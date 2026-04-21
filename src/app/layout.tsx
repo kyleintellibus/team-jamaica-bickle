@@ -12,6 +12,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Team Jamaica Bickle",
   description: "Supporting Jamaican and Caribbean youth athletes at the Penn Relays.",
+  icons: {
+    icon: "/tjblogo.png",
+    shortcut: "/tjblogo.png",
+    apple: "/tjblogo.png",
+  },
 };
 
 export default function RootLayout({
