@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white sticky top-0 z-50">
-      <div className="mx-auto grid h-16 w-full max-w-[1300px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-5">
+      <div className="mx-auto grid h-16 w-full max-w-[1300px] grid-cols-[1fr_auto] items-center gap-4 px-5 lg:grid-cols-[1fr_auto_1fr]">
         <Link href="/" className="justify-self-start">
           <Image src="/tjblogo.png" alt="Team Jamaica Bickle" width={48} height={48} className="object-contain" />
         </Link>
@@ -40,7 +40,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center justify-self-end gap-3">
+        <div className="col-start-2 flex items-center justify-self-end gap-3 lg:col-start-3">
           <button className="hidden lg:flex items-center gap-1.5 border border-gray-200 rounded-md px-2 py-1.5 hover:bg-gray-50 transition-colors">
             <Flag code="US" className="w-6 h-6 rounded-full object-cover" />
             <svg className="w-3 h-3 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
@@ -50,7 +50,11 @@ export default function Header() {
           <Link href="https://secure.givelively.org/donate/team-jamaica-bickle-inc?ref=sd_widget" target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors">
             Donate now
           </Link>
-          <button className="lg:hidden p-1" onClick={() => setOpen(!open)}>
+          <button
+            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 text-gray-700 transition-colors hover:bg-gray-50"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          >
             {open ? <X className="w-6 h-6 text-gray-700" /> : <Menu className="w-6 h-6 text-gray-700" />}
           </button>
         </div>
@@ -58,21 +62,27 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="text-sm font-medium text-gray-700"
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link href="https://secure.givelively.org/donate/team-jamaica-bickle-inc?ref=sd_widget" target="_blank" rel="noopener noreferrer" className="bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-md text-center" onClick={() => setOpen(false)}>
-            Donate now
-          </Link>
+        <div className="lg:hidden border-t border-gray-100 bg-white/95 backdrop-blur-sm">
+          <div className="mx-auto w-full max-w-[1300px] px-5 py-4">
+            <div className="rounded-2xl border border-gray-200 bg-white p-2 shadow-lg shadow-gray-200/60">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="mt-2 border-t border-gray-100 pt-2">
+                <Link href="https://secure.givelively.org/donate/team-jamaica-bickle-inc?ref=sd_widget" target="_blank" rel="noopener noreferrer" className="block rounded-xl bg-green-600 px-4 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-green-700" onClick={() => setOpen(false)}>
+                  Donate now
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </header>

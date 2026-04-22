@@ -103,56 +103,56 @@ export default function PennRelaysPage() {
 
   return (
     <div className="bg-[#f1f3f4]">
-      <section className="relative isolate min-h-[760px] overflow-hidden">
+      <section className="relative isolate min-h-[680px] overflow-hidden md:min-h-[760px]">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/a566401332902d93a97687ebe8a0e7fee3071986.png')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/15" />
-        <div className="relative mx-auto flex min-h-[760px] w-full max-w-[1300px] flex-col justify-end gap-8 px-5 pb-10 pt-32 lg:flex-row lg:items-end lg:justify-between lg:pb-14">
+        <div className="relative mx-auto flex min-h-[680px] w-full max-w-[1300px] flex-col justify-end gap-6 px-5 pb-8 pt-28 md:min-h-[760px] md:gap-8 md:pb-10 md:pt-32 lg:flex-row lg:items-end lg:justify-between lg:pb-14">
           <div className="max-w-2xl text-white">
-            <h1 className="text-5xl font-semibold leading-[1.04] md:text-7xl">
+            <h1 className="text-4xl font-semibold leading-[1.04] sm:text-5xl md:text-6xl lg:text-7xl">
               Team Jamaica Bickle
               <br />
               5K Run/Walk
             </h1>
-            <p className="mt-7 max-w-xl text-lg text-white/85 md:text-2xl">
+            <p className="mt-5 max-w-xl text-base text-white/85 md:mt-7 md:text-xl lg:text-2xl">
               Lace up for a cause. Our community 5K brings together runners of all
               ages, with top finishers earning entry to Jamaica&apos;s Reggae Marathon.
             </p>
             <Button
               asChild
-              className="mt-8 h-14 rounded-2xl bg-[#12ba39] px-8 text-xl font-semibold text-white hover:bg-[#0fa133]"
+              className="mt-6 h-11 rounded-2xl bg-[#12ba39] px-6 text-base font-semibold text-white hover:bg-[#0fa133] md:mt-8 md:h-14 md:px-8 md:text-xl"
             >
               <Link href="/events">Register for the 5K</Link>
             </Button>
           </div>
 
-          <div className="w-full max-w-[460px] rounded-3xl border border-[#d8dde4] bg-white p-7 shadow-[0_20px_50px_rgba(8,19,38,0.25)] md:p-10">
-            <div className="mb-6 flex flex-wrap gap-3">
-              <span className="rounded-full border-2 border-[#0a9f2d] bg-[#f6d607] px-5 py-2 text-base font-semibold text-[#203046]">
+          <div className="w-full max-w-[460px] rounded-3xl border border-[#d8dde4] bg-white p-5 shadow-[0_20px_50px_rgba(8,19,38,0.25)] md:p-10">
+            <div className="mb-4 flex flex-wrap gap-2 md:mb-6 md:gap-3">
+              <span className="rounded-full border-2 border-[#0a9f2d] bg-[#f6d607] px-3 py-1.5 text-xs font-semibold text-[#203046] md:px-5 md:py-2 md:text-base">
                 The Penn Relays 2026
               </span>
-              <span className="rounded-full border-2 border-[#0a9f2d] bg-[#f6d607] px-5 py-2 text-base font-semibold text-[#203046]">
+              <span className="rounded-full border-2 border-[#0a9f2d] bg-[#f6d607] px-3 py-1.5 text-xs font-semibold text-[#203046] md:px-5 md:py-2 md:text-base">
                 Fundraising
               </span>
             </div>
-            <h2 className="text-5xl font-semibold leading-[1.05] text-[#1b2a44]">
+            <h2 className="text-3xl font-semibold leading-[1.05] text-[#1b2a44] md:text-5xl">
               Penn Relays 2026
             </h2>
-            <div className="mt-7 space-y-5 text-[#1d2940]">
-              <div className="flex items-start gap-4">
-                <CalendarDays className="mt-1 h-8 w-8" />
+            <div className="mt-5 space-y-4 text-[#1d2940] md:mt-7 md:space-y-5">
+              <div className="flex items-start gap-3 md:gap-4">
+                <CalendarDays className="mt-1 h-6 w-6 md:h-8 md:w-8" />
                 <div>
-                  <p className="text-xl text-[#68707d]">Dates</p>
-                  <p className="text-4xl font-semibold leading-tight">April 24-26, 2026</p>
+                  <p className="text-sm text-[#68707d] md:text-xl">Dates</p>
+                  <p className="text-2xl font-semibold leading-tight md:text-4xl">April 24-26, 2026</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <MapPin className="mt-1 h-8 w-8" />
+              <div className="flex items-start gap-3 md:gap-4">
+                <MapPin className="mt-1 h-6 w-6 md:h-8 md:w-8" />
                 <div>
-                  <p className="text-xl text-[#68707d]">Location</p>
-                  <p className="text-3xl font-semibold leading-tight">
+                  <p className="text-sm text-[#68707d] md:text-xl">Location</p>
+                  <p className="text-xl font-semibold leading-tight md:text-3xl">
                     Franklin Field, University of Pennsylvania, Philadelphia
                   </p>
                 </div>
@@ -160,7 +160,7 @@ export default function PennRelaysPage() {
             </div>
             <Button
               asChild
-              className="mt-8 h-14 w-full rounded-2xl bg-[#12ba39] text-2xl font-semibold text-white hover:bg-[#0fa133]"
+              className="mt-6 h-11 w-full rounded-2xl bg-[#12ba39] text-lg font-semibold text-white hover:bg-[#0fa133] md:mt-8 md:h-14 md:text-2xl"
             >
               <Link
                 href="https://secure.givelively.org/donate/team-jamaica-bickle-inc?ref=sd_widget"
@@ -174,13 +174,13 @@ export default function PennRelaysPage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-[#041c18] py-20 md:py-28">
+      <section className="relative isolate overflow-hidden bg-[#041c18] py-14 md:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,180,80,0.14),rgba(0,0,0,0))]" />
         <div className="relative mx-auto w-full max-w-[1300px] px-5">
-          <h2 className="text-center text-4xl font-semibold text-[#f1f6f2] md:text-7xl">
+          <h2 className="text-center text-3xl font-semibold text-[#f1f6f2] md:text-6xl lg:text-7xl">
             &quot;PENN RELAYS&quot; 2026 Countdown
           </h2>
-          <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-4">
+          <div className="mt-8 grid gap-3 md:mt-16 md:gap-5 md:grid-cols-4">
             {[
               { value: countdown.days, label: "Days" },
               { value: countdown.hours, label: "Hours" },
@@ -189,17 +189,17 @@ export default function PennRelaysPage() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="rounded-3xl border border-[#3f6a58] bg-[linear-gradient(180deg,rgba(2,79,39,0.84),rgba(2,54,34,0.84))] p-10 text-left shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+                className="rounded-3xl border border-[#3f6a58] bg-[linear-gradient(180deg,rgba(2,79,39,0.84),rgba(2,54,34,0.84))] p-6 text-left shadow-[0_20px_60px_rgba(0,0,0,0.25)] md:p-10"
               >
-                <p className="text-8xl font-light text-[#f5f9f6]">{item.value}</p>
-                <p className="mt-4 text-4xl font-medium uppercase tracking-[0.08em] text-[#0fd04c]">
+                <p className="text-6xl font-light text-[#f5f9f6] sm:text-7xl md:text-8xl">{item.value}</p>
+                <p className="mt-3 text-2xl font-medium uppercase tracking-[0.08em] text-[#0fd04c] md:mt-4 md:text-4xl">
                   {item.label}
                 </p>
               </div>
             ))}
           </div>
           {countdown.complete && (
-            <p className="mx-auto mt-10 w-fit rounded-2xl border border-[#7350b7] bg-[#33234c] px-9 py-4 text-2xl text-[#d8cef0]">
+            <p className="mx-auto mt-8 w-fit rounded-2xl border border-[#7350b7] bg-[#33234c] px-5 py-2.5 text-base text-[#d8cef0] md:mt-10 md:px-9 md:py-4 md:text-2xl">
               The countdown has ended!
             </p>
           )}
@@ -209,10 +209,10 @@ export default function PennRelaysPage() {
       <section className="py-16 md:py-24">
         <div className="mx-auto w-full max-w-[1300px] px-5">
           <div className="mx-auto w-full max-w-[1040px]">
-            <h2 className="max-w-[700px] text-5xl font-semibold leading-[1.08] text-[#141d35] md:text-7xl">
+            <h2 className="max-w-[700px] text-3xl font-semibold leading-[1.12] text-[#141d35] md:text-5xl lg:text-7xl">
               The World&apos;s Longest Uninterrupted Collegiate Track Meet
             </h2>
-            <div className="mt-8 max-w-[860px] space-y-6 text-2xl leading-[1.45] text-[#374256]">
+            <div className="mt-6 max-w-[860px] space-y-5 text-base leading-[1.55] text-[#374256] md:mt-8 md:space-y-6 md:text-xl">
               <p>
                 The Penn Relays Carnival is more than a track meet, it&apos;s a pilgrimage.
                 Held annually since 1895 at the University of Pennsylvania, it draws over
@@ -230,40 +230,40 @@ export default function PennRelaysPage() {
               </p>
             </div>
 
-            <div className="mt-10 grid gap-0 md:grid-cols-3">
+            <div className="mt-8 grid gap-0 md:mt-10 md:grid-cols-3">
               <Image
                 src="/Container-10.png"
                 alt="Jamaican student-athletes at the Penn Relays."
                 width={800}
                 height={1000}
-                className="h-[360px] w-full object-cover md:h-[560px]"
+                className="h-[280px] w-full object-cover md:h-[560px]"
               />
               <Image
                 src="/Container-11.png"
                 alt="Jamaican women sprinters celebrating together."
                 width={800}
                 height={1000}
-                className="h-[360px] w-full object-cover md:h-[560px]"
+                className="h-[280px] w-full object-cover md:h-[560px]"
               />
               <Image
                 src="/Container-12.png"
                 alt="Jamaican discus athlete competing in a stadium."
                 width={800}
                 height={1000}
-                className="h-[360px] w-full object-cover md:h-[560px]"
+                className="h-[280px] w-full object-cover md:h-[560px]"
               />
             </div>
 
-            <div className="mt-16">
-              <h3 className="text-5xl font-semibold text-[#141d35] md:text-7xl">
+            <div className="mt-12 md:mt-16">
+              <h3 className="text-3xl font-semibold text-[#141d35] md:text-5xl lg:text-7xl">
                 How We Support Our Athletes
               </h3>
-              <p className="mt-6 max-w-[900px] text-[34px] leading-[1.28] text-[#128b34]">
+              <p className="mt-5 max-w-[900px] text-xl leading-[1.35] text-[#128b34] md:mt-6 md:text-3xl">
                 In 1994, a group of Jamaicans in New York noticed something: young
                 athletes were arriving in Philadelphia with talent to spare, but little
                 else. No hot meals. No reliable transportation. No support system.
               </p>
-              <div className="mt-6 max-w-[920px] space-y-6 text-2xl leading-[1.45] text-[#374256]">
+              <div className="mt-5 max-w-[920px] space-y-5 text-base leading-[1.55] text-[#374256] md:mt-6 md:space-y-6 md:text-xl">
                 <p>
                   So they did what Jamaicans do. They cooked. They cared. They showed up.
                 </p>
@@ -275,17 +275,17 @@ export default function PennRelaysPage() {
               </div>
             </div>
 
-            <div className="mt-10 grid gap-3 md:grid-cols-3">
+            <div className="mt-8 grid gap-3 md:mt-10 md:grid-cols-3">
               {supportCards.map(({ title, description, icon: Icon }) => (
                 <article
                   key={title}
-                  className="flex min-h-[260px] flex-col justify-between rounded-2xl bg-[#d7ebda] p-7"
+                  className="flex min-h-[220px] flex-col justify-between rounded-2xl bg-[#d7ebda] p-5 md:min-h-[260px] md:p-7"
                 >
                   <div className="flex items-start justify-between">
-                    <h4 className="text-4xl font-semibold text-[#1b2a27]">{title}</h4>
-                    <Icon className="h-10 w-10 text-black" />
+                    <h4 className="text-2xl font-semibold text-[#1b2a27] md:text-4xl">{title}</h4>
+                    <Icon className="h-8 w-8 text-black md:h-10 md:w-10" />
                   </div>
-                  <p className="text-2xl leading-[1.35] text-[#2e3f3b]">{description}</p>
+                  <p className="text-base leading-[1.45] text-[#2e3f3b] md:text-2xl md:leading-[1.35]">{description}</p>
                 </article>
               ))}
             </div>
