@@ -111,18 +111,18 @@ export default function PennRelaysPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/15" />
         <div className="relative mx-auto flex min-h-[680px] w-full max-w-[1300px] flex-col justify-end gap-6 px-5 pb-8 pt-28 md:min-h-[760px] md:gap-8 md:pb-10 md:pt-32 lg:flex-row lg:items-end lg:justify-between lg:pb-14">
           <div className="max-w-2xl text-white">
-            <h1 className="text-4xl font-semibold leading-[1.04] sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="text-3xl font-semibold leading-[1.08] sm:text-4xl md:text-5xl lg:text-6xl">
               Team Jamaica Bickle
               <br />
               5K Run/Walk
             </h1>
-            <p className="mt-5 max-w-xl text-base text-white/85 md:mt-7 md:text-xl lg:text-2xl">
+            <p className="mt-4 max-w-xl text-sm text-white/85 md:mt-6 md:text-lg lg:text-xl">
               Lace up for a cause. Our community 5K brings together runners of all
               ages, with top finishers earning entry to Jamaica&apos;s Reggae Marathon.
             </p>
             <Button
               asChild
-              className="mt-6 h-11 rounded-2xl bg-[#12ba39] px-6 text-base font-semibold text-white hover:bg-[#0fa133] md:mt-8 md:h-14 md:px-8 md:text-xl"
+              className="mt-5 h-10 rounded-2xl bg-[#12ba39] px-5 text-sm font-semibold text-white hover:bg-[#0fa133] md:mt-7 md:h-12 md:px-7 md:text-base lg:h-14 lg:px-8 lg:text-lg"
             >
               <Link href="/events">Register for the 5K</Link>
             </Button>
@@ -137,7 +137,7 @@ export default function PennRelaysPage() {
                 Fundraising
               </span>
             </div>
-            <h2 className="text-3xl font-semibold leading-[1.05] text-[#1b2a44] md:text-5xl">
+            <h2 className="text-2xl font-semibold leading-[1.1] text-[#1b2a44] md:text-4xl lg:text-5xl">
               Penn Relays 2026
             </h2>
             <div className="mt-5 space-y-4 text-[#1d2940] md:mt-7 md:space-y-5">
@@ -145,14 +145,14 @@ export default function PennRelaysPage() {
                 <CalendarDays className="mt-1 h-6 w-6 md:h-8 md:w-8" />
                 <div>
                   <p className="text-sm text-[#68707d] md:text-xl">Dates</p>
-                  <p className="text-2xl font-semibold leading-tight md:text-4xl">April 24-26, 2026</p>
+                  <p className="text-xl font-semibold leading-tight md:text-3xl lg:text-4xl">April 24-26, 2026</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 md:gap-4">
                 <MapPin className="mt-1 h-6 w-6 md:h-8 md:w-8" />
                 <div>
                   <p className="text-sm text-[#68707d] md:text-xl">Location</p>
-                  <p className="text-xl font-semibold leading-tight md:text-3xl">
+                  <p className="text-lg font-semibold leading-tight md:text-2xl lg:text-3xl">
                     Franklin Field, University of Pennsylvania, Philadelphia
                   </p>
                 </div>
@@ -160,7 +160,7 @@ export default function PennRelaysPage() {
             </div>
             <Button
               asChild
-              className="mt-6 h-11 w-full rounded-2xl bg-[#12ba39] text-lg font-semibold text-white hover:bg-[#0fa133] md:mt-8 md:h-14 md:text-2xl"
+              className="mt-6 h-10 w-full rounded-2xl bg-[#12ba39] text-base font-semibold text-white hover:bg-[#0fa133] md:mt-7 md:h-12 md:text-lg lg:h-14 lg:text-xl"
             >
               <Link
                 href="https://secure.givelively.org/donate/team-jamaica-bickle-inc?ref=sd_widget"
